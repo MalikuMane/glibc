@@ -211,7 +211,7 @@ tests-internal += loadtest unload unload2 circleload1 \
 	 tst-ptrguard1 tst-stackguard1 tst-libc_dlvsym \
 	 tst-create_format1
 tests-container += tst-pldd tst-dlopen-tlsmodid-container \
-  tst-dlopen-self-container
+  tst-dlopen-self-container tst-preload-pthread-libc
 test-srcs = tst-pathopt
 selinux-enabled := $(shell cat /selinux/enforce 2> /dev/null)
 ifneq ($(selinux-enabled),1)
