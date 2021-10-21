@@ -126,4 +126,13 @@ glibc {
       default: 3
     }
   }
+
+  rtld {
+    dynamic_sort {
+      type: INT_32
+      minval: 1
+      maxval: 2
+      default: 1
+    }
+  }
 }
