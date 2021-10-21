@@ -31,6 +31,7 @@ their own namespace.
 @menu
 * Tunable names::  The structure of a tunable name
 * Memory Allocation Tunables::  Tunables in the memory allocation subsystem
+* Dynamic Linking Tunables:: Tunables in the dynamic linking subsystem
 * Elision Tunables::  Tunables in elision subsystem
 * POSIX Thread Tunables:: Tunables in the POSIX thread subsystem
 * Hardware Capability Tunables::  Tunables that modify the hardware
@@ -224,6 +225,23 @@ from fast bins with this tunable.  Note that the value specified
 includes malloc's internal overhead, which is normally the size of one
 pointer, so add 4 on 32-bit systems or 8 on 64-bit systems to the size
 passed to @code{malloc} for the largest bin size to enable.
+@end deftp
+
+@node Dynamic Linking Tunables
+@section Dynamic Linking Tunables
+@cindex dynamic linking tunables
+@cindex rtld tunables
+
+@deftp Tunable glibc.rtld.dynamic_sort
+Sets the algorithm to use for DSO sorting, valid values are @samp{1} and
+@samp{2}.  For value of @samp{1}, an older O(n^3) algorithm is used, which is
+long time tested, but may have performance issues when dependencies between
+shared objects contain cycles due to circular dependencies.  When set to the
+value of @samp{2}, a different algorithm is used, which implements a
+topological sort through depth-first search, and does not exhibit the
+performance issues of @samp{1}.
+
+The default value of this tunable is @samp{1}.
 @end deftp
 
 @node Elision Tunables
